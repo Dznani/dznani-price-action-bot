@@ -1,0 +1,38 @@
+# config.yaml — Dznani Signals Bot (Professional Price Action Edition)
+# Copy this file to config.yaml and fill in your real credentials.
+# Strategy/risk parameters live in dznani_signals.json settings (editable
+# live via /set key value) — this file is deployment/infra config only.
+
+telegram:
+  bot_token: "YOUR_TELEGRAM_BOT_TOKEN"     # get from @BotFather — NEVER commit this, revoke immediately if leaked
+  chat_id: "YOUR_CHAT_ID"
+
+binance:
+  api_key: ""      # optional — public OHLCV/ticker data works without keys
+  api_secret: ""
+
+# One-way signal export to a Notion database (dashboard/watchlist only —
+# never reads back from Notion, never affects trading logic). Leave
+# enabled: false or api_key/database_id blank to fully disable; the bot
+# runs identically either way.
+notion:
+  enabled: false
+  api_key: "YOUR_NOTION_API_KEY"
+  database_id: "YOUR_NOTION_DATABASE_ID"
+
+signals_path: "dznani_signals.json"
+watchlist_path: "watchlist.json"
+
+log_dir: "logs"
+log_level: "INFO"
+
+# How many closed candles to fetch per scan cycle for each timeframe.
+# 1H needs enough history for a 200-period EMA + swing structure warm-up;
+# 4H needs enough for HTF swing structure. Both feed strategy.MIN_1H_CANDLES
+# / MIN_4H_CANDLES guards.
+ohlcv_limit_1h: 300
+ohlcv_limit_4h: 150
+
+# Used only when watchlist.json is empty (scanner falls back to top-N
+# Binance USDT pairs by 24h quote volume).
+watchlist_fallback_limit: 200
