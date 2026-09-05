@@ -1,0 +1,48 @@
+--- .gitignore (原始)
+# Python
+venv/
+__pycache__/
+*.pyc
+*.log
+config.yaml
+*.csv
+*.json
+.env
+
+
++++ .gitignore (修改后)
+```gitignore
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Environment variables
+.env
+.env.local
+*.env.*
+```
